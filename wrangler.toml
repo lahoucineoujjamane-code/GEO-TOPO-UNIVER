@@ -1,0 +1,31 @@
+name = "geotopo-pro"
+main = "worker/index.js"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Static assets
+[site]
+bucket = "./public"
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "geotopo-pro-db"
+database_id   = "YOUR_D1_DATABASE_ID"   # wrangler d1 create geotopo-pro-db
+
+# R2 Bucket
+[[r2_buckets]]
+binding    = "STORAGE"
+bucket_name = "geotopo-pro-storage"
+
+# Environment variables (set secrets via wrangler secret put)
+[vars]
+APP_URL     = "https://geotopo-pro.YOUR_SUBDOMAIN.workers.dev"
+ENVIRONMENT = "production"
+
+# Secrets (set with: wrangler secret put JWT_SECRET)
+# JWT_SECRET = "..."
+# RESEND_API_KEY = "..."   (for email)
+
+[env.development]
+vars = { ENVIRONMENT = "development", APP_URL = "http://localhost:8787" }

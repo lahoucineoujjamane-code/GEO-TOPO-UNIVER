@@ -1,0 +1,16 @@
+{
+  "name": "geotopo-pro",
+  "version": "3.0.0",
+  "description": "GeoTopo Pro — Full-stack topographic platform",
+  "private": true,
+  "scripts": {
+    "dev":     "wrangler dev --port 8787",
+    "deploy":  "wrangler deploy",
+    "db:init": "wrangler d1 execute geotopo-pro-db --file=migrations/0001_init.sql",
+    "db:local":"wrangler d1 execute geotopo-pro-db --local --file=migrations/0001_init.sql",
+    "secret":  "wrangler secret put JWT_SECRET"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
